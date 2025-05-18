@@ -9,17 +9,39 @@
         /* Temporary inline styles – feel free to move these into style.css */
         body {
             font-family: Arial, sans-serif;
-            margin: 2em;
+            margin: 0;
+
+            /* 🎨 Background Styling */
+            background-image: url('images/background.jpg');
+            /* Update if you named it differently */
+            background-size: cover;
+            /* Fills the screen */
+            background-position: center;
+            /* Centered nicely */
+            background-repeat: no-repeat;
+            /* No tiling */
+            background-attachment: fixed;
+            /* 💡 Keeps it still while scrolling */
+            color: #111;
+            /* Makes text readable */
         }
+
 
         /* == Main Content Wrapper == */
         .content {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Background for readability */
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            /* space inside the content box */
+            margin: 40px auto;
+            /* Top/bottom spacing + centered horizontally */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* Optional soft shadow */
             text-align: center;
         }
+
+
 
         /* == Logo Image Styling == */
         .logo {
@@ -66,7 +88,7 @@
         }
 
         .gallery-section {
-            margin-top: 600px;
+            margin-top: 150px;
             /* Moves the title and images down together */
         }
 
@@ -93,23 +115,24 @@
         }
 
         .services-list ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 40px;
 
-    list-style-position: inside;
-    padding-left: 0;
-    margin: 0 auto;
+            list-style-position: inside;
+            padding-left: 0;
+            margin: 0 auto;
 
-    max-width: 600px;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #333;
-    text-align: left;
+            max-width: 600px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            text-align: left;
 
-    position: relative;
-    left: 50px; /* ✅ This gently nudges the whole block right */
-}
+            position: relative;
+            left: 50px;
+            /* ✅ This gently nudges the whole block right */
+        }
 
 
 
@@ -122,6 +145,50 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ========== Call-to-Action Box ========== */
+        .cta-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #eef8e9;
+            /* soft green background */
+            border: 2px solid #c2e0b3;
+            border-radius: 10px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-text {
+            font-size: 20px;
+            font-weight: normal;
+            color: #2e8b57;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* ========== Phone Number Box ========== */
+        .phone-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff8e1;
+            /* warm yellow */
+            border: 2px solid #f4d03f;
+            border-radius: 10px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .phone-text {
+            font-size: 18px;
+            text-align: center;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
 
 
 
@@ -159,7 +226,7 @@
         <p>We proudly serve Savannah and beyond — no job too big or small!</p>
 
         <!-- Our Services Section -->
-        <d<div class="services-section">
+        <div class="services-section">
             <h2 class="section-title">Our Services</h2>
 
             <!-- Keep this paragraph if you want to explain the services -->
@@ -180,19 +247,44 @@
                     <li>Construction Debris Removal</li>
                     <li>Estate Cleanups</li>
                     <li>Recycling & Donations</li>
+                    <li>Attic cleanout</li>
+                    <li>Storage Container</li>
+                    <li>HOA Trash/Junk Relief</li>
+                    <li>Large and Small Pick-ups</li>
                 </ul>
             </div>
-    </div>
-
-
-
-    <!-- Photo Gallery -->
-    <div class="gallery-section">
-        <h2 class="section-title">Gallery</h2>
-        <div class="gallery">
-            <img src="images/photo1.jpg" alt="Gallery Photo 1">
-            <img src="images/photo2.jpg" alt="Gallery Photo 2">
-            <img src="images/photo3.jpg" alt="Gallery Photo 3">
-            <img src="images/photo4.jpg" alt="Gallery Photo 4">
         </div>
-    </div>
+
+        <div class="cta-box">
+            <p class="cta-text">
+                Call today to get your <strong>free</strong> quote and in-person estimate. We are a Fast, quality service you can count on!
+            </p>
+        </div>
+
+
+        <!-- ✅ Phone Number Box -->
+        <div class="phone-box">
+            <p class="phone-text">
+                📞 <span class="phone-line">Call us now: <a
+                        href="tel:9514685865"><strong>951-468-5865</strong></a></span><br>
+                <span class="slogan-line"><em>And remember: if you're ever in need, <strong>951-GOT-JUNK</strong> is
+                        your friend indeed!</em></span>
+            </p>
+        </div>
+
+
+
+
+        <!-- Photo Gallery -->
+        <div class="gallery-section">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery">
+                <img src="images/photo1.jpg" alt="Gallery Photo 1">
+                <img src="images/photo2.jpg" alt="Gallery Photo 2">
+                <img src="images/photo3.jpg" alt="Gallery Photo 3">
+                <img src="images/photo4.jpg" alt="Gallery Photo 4">
+            </div>
+        </div> <!-- Closes .content -->
+</body>
+
+</html>
