@@ -12,22 +12,139 @@
             margin: 2em;
         }
 
+        /* == Main Content Wrapper == */
         .content {
-            text-align: left;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 20px;
+            /* space inside the content box */
+            text-align: center;
         }
 
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 2em;
-        }
-
-        .gallery img {
+        /* == Logo Image Styling == */
+        .logo {
             width: 200px;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        /* == Section Titles (like "Gallery") == */
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* == Gallery Grid == */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 100px;
+            /* space above gallery */
+            margin-bottom: 40px;
+            /* space below gallery */
+            justify-items: center;
+        }
+
+        /* == Individual Gallery Images == */
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
             height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-section {
+            margin-top: 600px;
+            /* Moves the title and images down together */
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+
+        .services-section {
+            max-width: 800px;
+            margin: 60px auto 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .services-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .services-list ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+
+    list-style-position: inside;
+    padding-left: 0;
+    margin: 0 auto;
+
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    text-align: left;
+
+    position: relative;
+    left: 50px; /* ✅ This gently nudges the whole block right */
+}
+
+
+
+        .services-list li::marker {
+            color: #2e8b57;
+        }
+
+        @media (max-width: 600px) {
+            .services-list ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+        /* == Mobile-Friendly Layout == */
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                /* stack photos vertically on phones */
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+        }
+
+        .logo {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto 1em;
             border-radius: 8px;
             object-fit: cover;
         }
@@ -36,17 +153,46 @@
 
 <body>
     <div class="content">
-        <img src="logo.png" alt="Junk Experts Logo" style="max-width: 200px; display: block; margin-bottom: 1em;">
+        <img src="logo.png" alt="Junk Experts Logo" class="logo">
+
         <h1>Junk Experts of Savannah</h1>
         <p>We proudly serve Savannah and beyond — no job too big or small!</p>
 
-        <!-- Photo Gallery -->
+        <!-- Our Services Section -->
+        <d<div class="services-section">
+            <h2 class="section-title">Our Services</h2>
+
+            <!-- Keep this paragraph if you want to explain the services -->
+            <p class="services-text">
+                At Junk Experts, we offer fast, friendly, and reliable junk removal for residential, commercial, and
+                construction sites.
+                Whether it's clearing a garage, cleaning up a yard, or organizing a whole home — no job is too big or
+                too small.
+                We recycle, donate, and dispose responsibly. One call clears it all!
+            </p>
+
+            <!-- Add this new bullet point list under the paragraph -->
+            <div class="services-list">
+                <ul>
+                    <li>Household Cleanouts</li>
+                    <li>Garage Organization</li>
+                    <li>Furniture Hauling</li>
+                    <li>Construction Debris Removal</li>
+                    <li>Estate Cleanups</li>
+                    <li>Recycling & Donations</li>
+                </ul>
+            </div>
+    </div>
+
+
+
+    <!-- Photo Gallery -->
+    <div class="gallery-section">
+        <h2 class="section-title">Gallery</h2>
         <div class="gallery">
-            <img src="images/photo1.jpg" alt="Before Cleanup">
-            <img src="images/photo2.jpg" alt="After Cleanup">
-            <img src="images/photo3.jpg" alt="Organized Garage">
+            <img src="images/photo1.jpg" alt="Gallery Photo 1">
+            <img src="images/photo2.jpg" alt="Gallery Photo 2">
+            <img src="images/photo3.jpg" alt="Gallery Photo 3">
+            <img src="images/photo4.jpg" alt="Gallery Photo 4">
         </div>
     </div>
-</body>
-
-</html>
