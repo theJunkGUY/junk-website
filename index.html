@@ -5,13 +5,48 @@
     <meta charset="UTF-8">
     <title>Junk Experts</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Temporary inline styles – feel free to move these into style.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+        }
+
+        .content {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 2em;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
-    <img src="logo.png" alt="Junk Experts Logo" style="max-width: 200px; display: block; margin: 0 auto 1em;">
-    <h1>Junk Experts of Savannah</h1>
-    <p>We proudly serve Savannah and beyond — no job too big or small!</p>
+    <div class="content">
+        <img src="logo.png" alt="Junk Experts Logo" style="max-width: 200px; display: block; margin-bottom: 1em;">
+        <h1>Junk Experts of Savannah</h1>
+        <p>We proudly serve Savannah and beyond — no job too big or small!</p>
 
+        <!-- Photo Gallery -->
+        <div class="gallery">
+            <img src="images/photo1.jpg" alt="Before Cleanup">
+            <img src="images/photo2.jpg" alt="After Cleanup">
+            <img src="images/photo3.jpg" alt="Organized Garage">
+        </div>
+    </div>
 </body>
 
 </html>
