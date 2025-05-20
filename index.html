@@ -1,49 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Junk Experts</title>
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* Temporary inline styles – feel free to move these into style.css */
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
-
-            /* 🎨 Background Styling */
-            background-image: url('images/background.jpg');
-            /* Update if you named it differently */
-            background-size: cover;
-            /* Fills the screen */
-            background-position: center;
-            /* Centered nicely */
-            background-repeat: no-repeat;
-            /* No tiling */
-            background-attachment: fixed;
-            /* 💡 Keeps it still while scrolling */
-            color: #111;
-            /* Makes text readable */
+            padding: 0;
         }
 
+        html,
+        body {
+            max-width: 100vw;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #111;
+        }
 
-        /* == Main Content Wrapper == */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #111;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                right: 20px;
+                top: 50px;
+                background-color: white;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+                border-radius: 6px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+        }
+
         .content {
             background-color: rgba(255, 255, 255, 0.9);
-            /* Background for readability */
             max-width: 1000px;
-            margin: 40px auto;
-            /* Top/bottom spacing + centered horizontally */
+            margin: 100px auto 40px;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            /* Optional soft shadow */
             text-align: center;
         }
 
-
-
-        /* == Logo Image Styling == */
         .logo {
             width: 200px;
             display: block;
@@ -52,7 +97,6 @@
             object-fit: cover;
         }
 
-        /* == Section Titles (like "Gallery") == */
         .section-title {
             font-size: 28px;
             margin-bottom: 20px;
@@ -60,19 +104,15 @@
             font-weight: bold;
         }
 
-        /* == Gallery Grid == */
         .gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-top: 100px;
-            /* space above gallery */
             margin-bottom: 40px;
-            /* space below gallery */
             justify-items: center;
         }
 
-        /* == Individual Gallery Images == */
         .gallery img {
             width: 100%;
             max-width: 300px;
@@ -86,19 +126,6 @@
         .gallery img:hover {
             transform: scale(1.03);
         }
-
-        .gallery-section {
-            margin-top: 150px;
-            /* Moves the title and images down together */
-        }
-
-        .section-title {
-            font-size: 28px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: bold;
-        }
-
 
         .services-section {
             max-width: 800px;
@@ -118,40 +145,24 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px 40px;
-
             list-style-position: inside;
             padding-left: 0;
             margin: 0 auto;
-
             max-width: 600px;
             font-size: 18px;
             line-height: 1.6;
             color: #333;
             text-align: left;
-
-            position: relative;
-            left: 50px;
-            /* ✅ This gently nudges the whole block right */
         }
-
-
 
         .services-list li::marker {
             color: #2e8b57;
         }
 
-        @media (max-width: 600px) {
-            .services-list ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ========== Call-to-Action Box ========== */
         .cta-box {
             margin-top: 30px;
             padding: 20px;
             background-color: #eef8e9;
-            /* soft green background */
             border: 2px solid #c2e0b3;
             border-radius: 10px;
             max-width: 700px;
@@ -167,12 +178,10 @@
             line-height: 1.5;
         }
 
-        /* ========== Phone Number Box ========== */
         .phone-box {
             margin-top: 20px;
             padding: 20px;
             background-color: #fff8e1;
-            /* warm yellow */
             border: 2px solid #f4d03f;
             border-radius: 10px;
             max-width: 700px;
@@ -188,15 +197,9 @@
             line-height: 1.6;
         }
 
-
-
-
-
-        /* == Mobile-Friendly Layout == */
         @media (max-width: 600px) {
             .gallery {
                 grid-template-columns: 1fr;
-                /* stack photos vertically on phones */
             }
 
             .logo {
@@ -207,29 +210,26 @@
                 font-size: 22px;
             }
         }
-
-        .logo {
-            max-width: 200px;
-            display: block;
-            margin: 0 auto 1em;
-            border-radius: 8px;
-            object-fit: cover;
-        }
     </style>
 </head>
 
 <body>
-    <div class="content">
-        <img src="logo.png" alt="Junk Experts Logo" class="logo">
+    <nav>
+        <span class="menu-icon" id="menuToggle">&#9776;</span>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quote.html">Quote</a></li>
 
+        </ul>
+    </nav>
+
+    <div class="content">
+        <img src="logo.png" alt="Junk Experts Logo" class="logo" />
         <h1>Junk Experts of Savannah</h1>
         <p>We proudly serve Savannah and beyond — no job too big or small!</p>
 
-        <!-- Our Services Section -->
         <div class="services-section">
             <h2 class="section-title">Our Services</h2>
-
-            <!-- Keep this paragraph if you want to explain the services -->
             <p class="services-text">
                 At Junk Experts, we offer fast, friendly, and reliable junk removal for residential, commercial, and
                 construction sites.
@@ -237,8 +237,6 @@
                 too small.
                 We recycle, donate, and dispose responsibly. One call clears it all!
             </p>
-
-            <!-- Add this new bullet point list under the paragraph -->
             <div class="services-list">
                 <ul>
                     <li>Household Cleanouts</li>
@@ -257,34 +255,47 @@
 
         <div class="cta-box">
             <p class="cta-text">
-                Call today to get your <strong>free</strong> quote and in-person estimate. We are a Fast, quality service you can count on!
+                Call today to get your <strong>free</strong> quote and in-person estimate. We are a Fast, quality
+                service you can count on!
             </p>
         </div>
 
-
-        <!-- ✅ Phone Number Box -->
         <div class="phone-box">
             <p class="phone-text">
                 📞 <span class="phone-line">Call us now: <a
-                        href="tel:9514685865"><strong>951-468-5865</strong></a></span><br>
+                        href="tel:9514685865"><strong>951-468-5865</strong></a></span><br />
                 <span class="slogan-line"><em>And remember: if you're ever in need, <strong>951-GOT-JUNK</strong> is
                         your friend indeed!</em></span>
             </p>
         </div>
 
-
-
-
-        <!-- Photo Gallery -->
         <div class="gallery-section">
             <h2 class="section-title">Gallery</h2>
             <div class="gallery">
-                <img src="images/photo1.jpg" alt="Gallery Photo 1">
-                <img src="images/photo2.jpg" alt="Gallery Photo 2">
-                <img src="images/photo3.jpg" alt="Gallery Photo 3">
-                <img src="images/photo4.jpg" alt="Gallery Photo 4">
+                <img src="images/photo1.jpg" alt="Gallery Photo 1" />
+                <img src="images/photo2.jpg" alt="Gallery Photo 2" />
+                <img src="images/photo3.jpg" alt="Gallery Photo 3" />
+                <img src="images/photo4.jpg" alt="Gallery Photo 4" />
             </div>
-        </div> <!-- Closes .content -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('show');
+        });
+    </script>
+    <footer style="background-color: rgba(255,255,255,0.95); text-align: center; padding: 20px; margin-top: 40px; font-size: 14px;">
+        <p>
+           <a href="mailto:kasey@junkexpertsofsavannah.com" style="color: #111; text-decoration: none;">kasey@junkexpertsofsavannah.com</a>
+        </p>
+        <p>
+           <a href="https://www.instagram.com/junkexpertsofsavannah" target="_blank" style="color: #111; text-decoration: none;">@junkexpertsofsavannah</a> |
+          🔗 <a href="#" style="color: #111; text-decoration: none;" title="Coming soon!">Facebook</a>
+        </p>
+      </footer>
+      
 </body>
 
 </html>

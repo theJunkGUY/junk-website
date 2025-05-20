@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Estimate Quote - Junk Experts</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #111;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #111;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                right: 20px;
+                top: 50px;
+                background-color: white;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+                border-radius: 6px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 100px auto 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+        }
+
+        .item-row label {
+            flex: 1;
+        }
+
+        .item-row input {
+            width: 60px;
+        }
+
+        #calculateBtn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #24a148;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #quoteResult {
+            margin-top: 20px;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.95em;
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <span class="menu-icon" id="menuToggle">&#9776;</span>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quote.html">Quote</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Estimate Your Junk Removal</h1>
+
+        <form id="quoteForm">
+            <fieldset>
+                <legend>Furniture</legend>
+                <div class="item-row"><label>Chair ($35)</label><input type="number" min="0" value="0" data-price="35">
+                </div>
+                <div class="item-row"><label>Couch ($120)</label><input type="number" min="0" value="0"
+                        data-price="120"></div>
+                <div class="item-row"><label>Table ($65)</label><input type="number" min="0" value="0" data-price="65">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Appliances</legend>
+                <div class="item-row"><label>Dishwasher ($110)</label><input type="number" min="0" value="0"
+                        data-price="110"></div>
+                <div class="item-row"><label>Refrigerator ($180)</label><input type="number" min="0" value="0"
+                        data-price="180"></div>
+                <div class="item-row"><label>Washing Machine ($150)</label><input type="number" min="0" value="0"
+                        data-price="150"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Electronics</legend>
+                <div class="item-row"><label>TV ($128)</label><input type="number" min="0" value="0" data-price="128">
+                </div>
+                <div class="item-row"><label>Computer ($98)</label><input type="number" min="0" value="0"
+                        data-price="98"></div>
+                <div class="item-row"><label>Monitor ($75)</label><input type="number" min="0" value="0"
+                        data-price="75"></div>
+            </fieldset>
+
+
+            <fieldset>
+                <legend>XL Items</legend>
+                <div class="item-row"><label>Piano ($738)</label><input type="number" min="0" value="0"
+                        data-price="738"></div>
+                <div class="item-row"><label>Riding Mower ($138)</label><input type="number" min="0" value="0"
+                        data-price="138"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Miscellaneous</legend>
+                <div class="item-row"><label>Yard Debris ($35)</label><input type="number" min="0" value="0"
+                        data-price="35"></div>
+                <div class="item-row"><label>Trash Bags ($15)</label><input type="number" min="0" value="0"
+                        data-price="15"></div>
+                <div class="item-row"><label>Small Heavy Items ($25)</label><input type="number" min="0" value="0"
+                        data-price="25"></div>
+                <div class="item-row"><label>General Junk ($20)</label><input type="number" min="0" value="0"
+                        data-price="20"></div>
+                <div class="item-row"><label>Bike ($40)</label><input type="number" min="0" value="0" data-price="40">
+                </div>
+                <div class="item-row"><label>Mattress ($90)</label><input type="number" min="0" value="0"
+                        data-price="90"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Truckload Option (instead of listing items)</legend>
+                <div class="item-row"><label>Number of Truckloads ($238 each)</label><input type="number" min="0"
+                        value="0" id="truckloads"></div>
+            </fieldset>
+
+            <button type="button" id="calculateBtn">Calculate Estimate</button>
+        </form>
+
+        <div id="quoteResult"></div>
+        <div
+            style="margin-top: 40px; padding: 20px; background-color: #fffbe6; border-left: 6px solid #ffeb3b; border-radius: 10px; text-align: center; font-size: 16px;">
+            <p>
+                Don’t see your item listed? No worries — chances are we can help!
+            </p>
+            <p>
+                Give one of our experts a call and get straightened up and stress-free in no time.
+            </p>
+            <p>
+                📞 <strong><a href="tel:9514685865" style="color: #111; text-decoration: none;">Call us at
+                        951-468-5865</a></strong>
+            </p>
+        </div>
+
+        <p class="disclaimer">All auto-generated estimates are subject to change. Your official total will be provided
+            after speaking with one of our experts — free of charge.</p>
+    </div>
+    <div
+        style="margin-top: 40px; padding: 20px; background-color: #ffe6e6; border-left: 6px solid #ff4d4d; border-radius: 10px;">
+        <h2 style="text-align: center;">🚫 What We Can’t Take</h2>
+        <p style="text-align: center;">Due to local regulations, we cannot remove the following items:</p>
+        <ul style="max-width: 600px; margin: 20px auto; list-style: disc; padding-left: 20px; color: #333;">
+            <li>Paints, varnishes, and thinners</li>
+            <li>Motor oil, antifreeze, and other automotive fluids</li>
+            <li>Gasoline, propane, kerosene, or diesel fuel/tanks</li>
+            <li>Pesticides, fertilizers, and pool chemicals</li>
+            <li>Fireworks, flares, fire extinguishers, and ammunition</li>
+            <li>Car batteries and rechargeable batteries</li>
+            <li>Fluorescent or CFL light bulbs</li>
+            <li>Thermometers or thermostats containing mercury</li>
+            <li>Medical waste, including needles and lancets</li>
+            <li>Asbestos-containing materials</li>
+        </ul>
+        <p style="text-align: center;">For proper disposal of these items, please contact the <a
+                href="https://www.jacksonville.gov/departments/public-works/solid-waste/disposal-operations/household-hazardous-wastes-%28hhw%29"
+                target="_blank">Jacksonville Household Hazardous Waste Facility</a>.</p>
+    </div>
+
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+
+        document.getElementById('calculateBtn').addEventListener('click', function () {
+            let total = 0;
+
+            const inputs = document.querySelectorAll('#quoteForm input[type="number"]');
+            inputs.forEach(input => {
+                const price = parseFloat(input.getAttribute('data-price')) || 0;
+                const quantity = parseInt(input.value) || 0;
+                total += price * quantity;
+            });
+
+            const truckloads = parseInt(document.getElementById('truckloads').value) || 0;
+            total += truckloads * 248;
+
+            document.getElementById('quoteResult').innerHTML = `<h2>Estimated Total: $${total.toFixed(2)}</h2>`;
+        });
+    </script>
+    <footer
+        style="background-color: rgba(255,255,255,0.95); text-align: center; padding: 20px; margin-top: 40px; font-size: 14px;">
+        <p>
+            <a href="mailto:kasey@junkexpertsofsavannah.com"
+                style="color: #111; text-decoration: none;">kasey@junkexpertsofsavannah.com</a>
+        </p>
+        <p>
+            <a href="https://www.instagram.com/junkexpertsofsavannah" target="_blank"
+                style="color: #111; text-decoration: none;">@junkexpertsofsavannah</a> |
+            🔗<a href="#" style="color: #111; text-decoration: none;" title="Coming soon!">Facebook</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
