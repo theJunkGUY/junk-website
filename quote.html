@@ -146,6 +146,68 @@
             color: #555;
             font-style: italic;
         }
+
+        .quote-button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .quote-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #24a148;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .quote-button:hover {
+            background-color: #1c7f3e;
+            transform: scale(1.03);
+        }
+
+        .quote-disclaimer {
+            text-align: center;
+            font-size: 16px;
+            color: #444;
+            margin: 10px 0 30px;
+            font-style: italic;
+        }
+
+        .pre-button-disclaimer {
+            font-size: 15px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #555;
+            font-style: italic;
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #eee;
+            border: 2px solid #ccc;
+            color: #111;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #ddd;
+            transform: scale(1.03);
+        }
     </style>
 </head>
 
@@ -160,6 +222,12 @@
 
     <div class="content">
         <h1>Estimate Your Junk Removal</h1>
+        <p class="quote-disclaimer">
+            This is just a rough estimate. Please <a href="tel:9514685865" style="color: #111; font-weight: bold;">call
+                us</a> to get your official quote — you might be happy to find the price
+            drops!
+        </p>
+
 
         <form id="quoteForm">
             <fieldset>
@@ -223,8 +291,16 @@
                         value="0" id="truckloads"></div>
             </fieldset>
 
+            <p class="pre-button-disclaimer">
+                Reminder: This is only a ballpark figure. Final pricing may be lower or higher depending on labor,
+                materials, and local disposal rates. Give us a quick call for an official quote!
+            </p>
+
+
             <button type="button" id="calculateBtn">Calculate Estimate</button>
         </form>
+
+
 
         <div id="quoteResult"></div>
         <div
@@ -244,6 +320,12 @@
         <p class="disclaimer">All auto-generated estimates are subject to change. Your official total will be provided
             after speaking with one of our experts — free of charge.</p>
     </div>
+
+    <div class="back-button-container">
+        <a href="index.html" class="back-button">⬅ Back to Main Menu</a>
+    </div>
+
+
     <div
         style="margin-top: 40px; padding: 20px; background-color: #ffe6e6; border-left: 6px solid #ff4d4d; border-radius: 10px;">
         <h2 style="text-align: center;">🚫 What We Can’t Take</h2>
@@ -282,7 +364,10 @@
             });
 
             const truckloads = parseInt(document.getElementById('truckloads').value) || 0;
-            total += truckloads * 248;
+            if (truckloads > 0) {
+                total += 238 + (truckloads - 1) * 100;
+            }
+
 
             document.getElementById('quoteResult').innerHTML = `<h2>Estimated Total: $${total.toFixed(2)}</h2>`;
         });

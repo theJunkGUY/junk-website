@@ -197,6 +197,30 @@
             line-height: 1.6;
         }
 
+        .quote-button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .quote-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #24a148;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .quote-button:hover {
+            background-color: #1c7f3e;
+            transform: scale(1.03);
+        }
+
+
         @media (max-width: 600px) {
             .gallery {
                 grid-template-columns: 1fr;
@@ -253,6 +277,11 @@
             </div>
         </div>
 
+        <div class="quote-button-container">
+            <a href="quote.html" class="quote-button">Get a Quick Quote</a>
+        </div>
+
+
         <div class="cta-box">
             <p class="cta-text">
                 Call today to get your <strong>free</strong> quote and in-person estimate. We are a Fast, quality
@@ -286,16 +315,19 @@
             nav.classList.toggle('show');
         });
     </script>
-    <footer style="background-color: rgba(255,255,255,0.95); text-align: center; padding: 20px; margin-top: 40px; font-size: 14px;">
+    <footer
+        style="background-color: rgba(255,255,255,0.95); text-align: center; padding: 20px; margin-top: 40px; font-size: 14px;">
         <p>
-           <a href="mailto:kasey@junkexpertsofsavannah.com" style="color: #111; text-decoration: none;">kasey@junkexpertsofsavannah.com</a>
+            <a href="mailto:kasey@junkexpertsofsavannah.com"
+                style="color: #111; text-decoration: none;">kasey@junkexpertsofsavannah.com</a>
         </p>
         <p>
-           <a href="https://www.instagram.com/junkexpertsofsavannah" target="_blank" style="color: #111; text-decoration: none;">@junkexpertsofsavannah</a> |
-          🔗 <a href="#" style="color: #111; text-decoration: none;" title="Coming soon!">Facebook</a>
+            <a href="https://www.instagram.com/junkexpertsofsavannah" target="_blank"
+                style="color: #111; text-decoration: none;">@junkexpertsofsavannah</a> |
+            🔗 <a href="#" style="color: #111; text-decoration: none;" title="Coming soon!">Facebook</a>
         </p>
-      </footer>
-      
+    </footer>
+
 </body>
 
 </html>
